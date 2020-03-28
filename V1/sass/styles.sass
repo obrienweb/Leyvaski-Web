@@ -1,0 +1,1338 @@
+// VARIABLES
+
+$font-stack: 'Heebo', sans-serif
+$baskerville: 'Libre Baskerville', serif
+
+$awesome: fontawesome
+
+$font-size: 1.6rem
+
+$black: #000
+$white: #fff
+$gray: #777
+$light-gray: #bbb
+$blue: #2812f5
+$motor: #f5c77e
+$nkp: #05b4d4
+$leyvaski: #f12e3e
+$labplex: #35ec99
+$monte: #c7ac73
+
+$small: 300px
+$medium: 768px
+$tablet: 960px
+$desktop: 1024px
+$large: 1200px
+
+@function between($from, $to, $fromWidth, $toWidth)
+  $slope: ($to - $from) / ($toWidth - $fromWidth)
+  $base: $from - $slope * $fromWidth
+
+  @return calc(#$base + #100vw * $slope)
+
+@import "mixins"
+
+// STLYES
+
+html
+  scroll-behavior: smooth
+  box-sizing: border-box
+  font-size: 62.5%
+  @media only screen and (max-width: 68.75em)
+    html
+      font-size: 50%
+  @media only screen and (max-width: 37.5em)
+    html
+      font-size: 45%
+  @media only screen and (max-width: 31.25em)
+    html
+      font-size: 40%
+
+body
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  font-family: $font-stack
+  font-size: $font-size
+  color: $gray
+  font-weight: 300
+  background: $white
+  &.dark
+    background: $black
+    color: $white
+    h1, h2, h3, q
+      color: $white
+    q
+      &::before
+        background: $white
+    #name
+      a
+        color: $white
+    .menu__toggler
+      span,
+      span::before,
+      span::after
+        background: #fff
+      // &.active > span::before,
+      // &.active > span::after
+      //   background: #000
+    .menu
+      background: #1e1f23
+      > ul li a
+        color: $white
+        &::before
+          background: $white
+    .btn
+      color: $white
+      &::before
+        background: $white
+    footer
+      background: $black
+
+h1, h2, h3
+  color: $black
+  line-height: 1.2
+
+h1
+  font-size: 5rem
+  font-weight: 300
+  text-transform: uppercase
+  letter-spacing: 3px
+
+h2
+  font-size: 2rem
+  font-weight: 700
+  text-transform: uppercase
+  letter-spacing: 3px
+  margin-bottom: 1rem
+
+h3
+  font-size: 7.5rem
+  font-weight: 100
+  margin-left: -.6rem
+  margin-bottom: 3rem
+
+h4
+  font-size: 1.375em
+  font-weight: 600
+
+p
+  padding: 1rem 0
+  line-height: 2.3
+
+strong
+  font-weight: 500
+  color: $black
+
+a
+  color: $black
+  font-weight: 500
+  text-decoration: none
+  outline: none
+  -webkit-transition: all .5s ease-out
+  -moz-transition: all .5s ease-out
+  transition: all .5s ease-out
+  position: relative
+  padding-bottom: 5px
+  &::before
+    content: ''
+    position: absolute
+    bottom: 0
+    left: 0
+    width: 15%
+    height: 2px
+    background: $black
+    transition: .5s all cubic-bezier(.68,-.55,.265,1.55)
+  &:visited, &:link
+    color: $black
+    text-decoration: none
+    outline: none
+    -webkit-transition: all .5s ease-out
+    -moz-transition: all .5s ease-out
+    transition: all .5s ease-out
+  &:hover, &:focus
+    color: $black
+    text-decoration: none
+    outline: none
+    &::before
+      width: 100%
+
+q
+  font-family: $baskerville
+  font-size: 2.75rem
+  line-height: 2
+  color: $black
+  padding: 7rem 0 5.5rem 5.5rem
+  display: block
+  position: relative
+  &::before
+    content: ''
+    background: $black
+    width: 2px
+    height: 60px
+    position: absolute
+    top: 6.75rem
+    left: 0
+
+cite
+  font-style: normal
+  display: block
+  margin-left: 5.5rem
+
+ul, ol
+  clear: both
+
+.fl
+  float: left
+
+.fr
+  float: right
+
+.fn
+  float: none
+  display: inline-block
+
+.tal
+  text-align: left
+
+.tar
+  text-align: right
+
+.tac
+  text-align: center
+
+.clr-l
+  clear: left
+
+.clr-r
+  clear: right
+
+.clr, .clear
+  clear: both
+
+.nodisp
+  display: none
+
+.relative
+  position: relative
+
+.lrg-grid-container
+  max-width: 1744px
+  margin-left: auto
+  margin-right: auto
+
+/* GLOBAL STYLES
+
+::selection
+  background: #35ec99
+::-moz-selection
+  background: #35ec99
+
+img
+  border: 0px
+
+.img-resp, .img-responsive
+  max-width: 100%
+  height: auto
+
+img
+  &.left, &.alignleft
+    float: left
+    margin: 10px 15px 0px 0px
+
+.img-l
+  float: left
+  margin: 10px 15px 0px 0px
+
+img
+  &.right, &.alignright
+    float: right
+    margin: 10px 0px 0px 15px
+
+.img-r
+  float: right
+  margin: 10px 0px 0px 15px
+
+iframe
+  width: 100%
+  height: 500px
+
+.mb
+  margin-bottom: 5rem
+
+.btn
+  display: inline-block
+  margin-top: 5rem
+
+.embed
+  position: relative
+  display: block
+  height: 0px
+  padding: 0px
+  overflow: hidden
+
+.embed-responsive
+  &.embed-responsive-4x3
+    padding-bottom: 75%
+  &.embed-responsive-16x9
+    padding-bottom: 56.25%
+  .embed-item, iframe, embed, object
+    position: absolute
+    top: 0px
+    bottom: 0px
+    left: 0px
+    width: 100%
+    height: 100%
+    border: 0px none
+
+.flex
+  display: flex
+
+.flex-center
+  display: flex
+  justify-content: center
+  flex-direction: column
+  height: 100%
+
+.align-center
+  display: flex
+  align-items: center
+
+section
+  margin: 36rem 0
+
+input, select, textarea
+  -webkit-transition: all .5s ease-out
+  -moz-transition: all .5s ease-out
+  transition: all .5s ease-out
+
+.main-nav
+  flex: 3 auto
+  ul
+    display: flex
+    flex-direction: row
+    justify-content: flex-end
+    li
+      a
+        padding: .96em 1.5em
+        color: $white
+        position: relative
+
+.open-nav
+  position: absolute
+  right: 45px
+  font-size: 30px
+  cursor: pointer
+  color: $white
+  &:hover, &:focus
+    color: $white
+
+.overlay
+  height: 100%
+  width: 0
+  position: fixed
+  z-index: 10
+  top: 0
+  left: 0
+  background-color: #802123
+  background-image: linear-gradient( 40deg, rgb(155,56,58) 0%, rgb(128,33,35) 100%)
+  overflow-x: hidden
+  transition: 0.5s
+  li
+    margin: 25px auto
+  a
+    padding: 8px
+    text-decoration: none
+    font-size: 28px
+    color: $white
+    display: block
+    transition: 0.3s
+  .closebtn
+    position: absolute
+    top: 13px
+    right: 36px
+    font-size: 60px
+  .overlay-content
+    position: relative
+    top: 25%
+    width: 100%
+    text-align: center
+    margin-top: 30px
+
+header
+  padding: 8rem 0
+
+.main-nav
+  display: flex
+  justify-content: flex-end
+
+/* MENU BUTTON */
+.menu__toggler
+  z-index: 999
+  height: 45px
+  width: 45px
+  margin: -2.3rem 0 0 0
+  outline: none
+  cursor: pointer
+  display: flex
+  align-items: center
+  justify-content: flex-end
+  position: fixed
+  transition: margin .3s linear
+  span,
+  span::before,
+  span::after
+    content: ''
+    position: absolute
+    right: 0
+    width: 45px
+    height: 2px
+    background: #000
+    border-radius: 20px
+    transition: 500ms cubic-bezier(0.77, 0, 0.175, 1)
+  span
+    width: 25px
+  span::before
+    top: -12px
+  span::after
+    top: 12px
+  &:hover
+    span
+      width: 45px
+  &.active > span
+    background: transparent !important
+  &.active > span::before,
+  &.active > span::after
+    //background: #005c9c
+    top: 0px
+  &.active > span::before
+    transform: rotate(-225deg)
+  &.active > span::after
+    transform: rotate(225deg)
+
+/* SLIDING MENU PANEL */
+.menu
+  position: fixed
+  left: -100%
+  //left: 0
+  z-index: 998
+  color: #005c9c
+  background: rgba(#fafafa,1)
+  //clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%)
+  width: 100%
+  height: 100%
+  padding: 15%
+  box-sizing: border-box
+  display: flex
+  flex-direction: column
+  justify-content: center
+  transition: 400ms left cubic-bezier(0.77, 0, 0.175, 1)
+  &.active
+    left: 0
+  > ul
+    li
+      margin: 3rem 0
+      a
+        font-size: 7.5rem
+        font-weight: 100
+        &::before
+          width: 0%
+        &:hover, &:focus
+          &::before
+            width: 100%
+
+#name
+  text-transform: uppercase
+  letter-spacing: 3px
+  font-weight: 900
+  color: $black
+  a
+    &::before
+      display: none
+
+.banner
+  position: relative
+  margin-top: 11rem
+  #logo
+    position: absolute
+    z-index: 5
+    margin-left: -5%
+    mix-blend-mode: multiply
+  .banner-image
+    background: url(../images/banner-main.jpg) no-repeat top right
+    height: 926px
+    position: relative
+    text-align: center
+  .sub-text
+    position: absolute
+    bottom: 0
+    z-index: 5
+    transform: rotate(-90deg)
+    transform-origin: left
+    display: inline-block
+  .tagline
+    position: absolute
+    left: 0
+    z-index: 5
+    color: $black
+  &.internal
+    #logo
+      bottom: 15rem
+      margin-left: -.75%
+    .tagline
+      margin-top: 17.5rem
+      padding-left: 15px
+      font-size: 50px
+      font-size: 5rem
+      @media (min-width: $medium)
+        font-size: between(50px, 100px, $medium, $large)
+      @media (min-width: $large)
+        font-size: 100px
+        font-size: 10rem
+    .banner-image
+      background: url(../images/about-banner.jpg) no-repeat top right
+      height: 926px
+
+.tagline
+  font-family: $baskerville
+  text-transform: none
+  font-weight: 300
+  color: $white
+
+.social-media
+  font-size: 1.8rem
+  li
+    display: inline-block
+    margin: 0 5px
+    &:first-of-type
+      margin-left: 0
+    &:last-of-type
+      margin-right: 0
+
+.about
+  margin-bottom: 0
+  padding-bottom: 10rem
+  overflow: hidden
+  // height: 100%
+  // div
+  //   height: 100%
+  h2, h3
+    position: relative
+    left: 15px
+  .icon
+    .vertical-line
+      min-height: 1000px
+
+.about-page
+  q
+    padding: 6rem
+  .white-bg
+    &.about--quote
+      padding-right: 15px
+
+@media only screen and (min-width: 768px)
+  .about-page
+    .white-bg
+      padding-right: 4rem
+
+.white-bg
+  background: $white
+
+.date
+  background: #2812f5
+  color: #2916d3
+  font-family: $baskerville
+  font-size: 34rem
+  line-height: .9
+  text-align: center
+  padding-bottom: 50rem
+  position: absolute
+  right: 0
+  z-index: -1
+  > div
+    margin-top: -6rem
+  span
+    display: block
+
+.icon
+  div
+    &:first-of-type
+      width: 53px
+      height: 53px
+      border: 1px solid $light-gray
+      margin: 5rem auto 0
+      position: relative
+      display: flex
+      align-items: center
+      justify-content: center
+  svg
+    fill: $light-gray
+    width: 29px
+  .vertical-line
+    width: 1px
+    margin: auto
+    background-color: $light-gray
+    height: 350px
+
+.identity-projects
+  position: relative
+  margin-top: 0
+  .project-images
+    position: absolute
+    top: 0
+    right: 0
+  .project-content
+    position: relative
+    z-index: 5
+    background: $white
+    padding: 5rem 5rem 2rem 1rem
+    margin-bottom: 30rem
+    h3
+      font-size: 40px
+      @media (min-width: $tablet)
+        font-size: between(40px, 75px, $tablet, $large)
+      @media (min-width: $large)
+        font-size: 75px
+  .controls
+    //padding-bottom: 21rem
+    background: $white
+    width: 223px
+    position: relative
+    //bottom: 0
+    z-index: 5
+    .slick-prev, .slick-next
+      background: $white
+      border: 1px solid #bbb
+      width: 112px
+      height: auto
+      box-sizing: border-box
+      top: auto
+      transform: none
+      +transition
+      &::before, &::after
+        color: rgba($black,.1)
+        font-size: 4rem
+        +transition
+      &:hover
+        &::before, &::after
+          color: $black
+    .slick-prev
+      left: 0
+    .slick-next
+      right: 0
+  .pager
+    font-family: $baskerville
+    font-size: 15rem
+    color: #2812f5
+    mix-blend-mode: multiply
+    position: absolute
+    bottom: -9rem
+    left: 8%
+  .flex-direction-nav
+    a
+      position: absolute
+
+.web-projects
+  h3
+    margin-bottom: 0
+  .web-content
+    background: $white
+    padding: 5.5rem
+    position: relative
+    z-index: 2
+    &.top
+      margin-bottom: -7rem
+    &.bottom
+      margin-top: -21rem
+      p
+        &:first-of-type
+          margin-top: -.3rem
+          padding-top: 0
+
+.brandmarks
+  background: #f7f7f7
+  padding: 18rem 0
+  overflow: hidden
+  p
+    &:first-of-type
+      padding-top: 0
+  ul
+    text-align: center
+    margin-top: 5rem
+
+.logos
+  opacity: .2
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-wrap: wrap
+  ul
+    text-align: center
+  li
+    width: 9rem
+    margin: 3%
+
+.port-grid
+  overflow: hidden
+  .port-contain
+    &:first-of-type
+      margin-top: 0
+
+.port-contain
+  margin: 30rem 0
+  position: relative
+  h2
+    font-size: 10rem
+    font-family: $baskerville
+    text-transform: none
+    font-weight: 400
+  .btn
+    margin-left: 5.5rem
+  .port-info
+    position: absolute
+    padding-left: 1.5rem
+    z-index: 10
+    &.port-info--right
+      margin-left: 55%
+  &.motor-history
+    .icon
+      div
+        &:first-of-type
+          border: 1px solid $motor
+      svg
+        fill: $motor
+      .vertical-line
+        background-color: $motor
+        background: linear-gradient(0deg, #05121d 0%, $motor 100%)
+    h2
+      color: $motor
+    .port-info
+      margin-top: 20rem
+    .port-items
+      > div
+        &:first-child
+          width: 50vw
+          margin-top: 4rem
+          margin-left: 50%
+        &:nth-child(2)
+          margin-top: -10rem
+          width: 70vw
+        &:nth-child(3)
+          width: 30vw
+          margin-top: -15rem
+          margin-left: 60%
+  &.nkp
+    margin-top: 40rem
+    .icon
+      div
+        &:first-of-type
+          border: 1px solid $nkp
+      svg
+        fill: $nkp
+      .vertical-line
+        background-color: $nkp
+        background: linear-gradient(0deg, #088cb2 0%, $nkp 100%)
+    h2
+      color: $nkp
+    .port-info
+      margin-top: 20rem
+    .port-items
+      > div
+        &:first-child
+          width: 50vw
+        &:nth-child(2)
+          margin-left: 60%
+          width: 40vw
+        &:nth-child(3)
+          width: 50vw
+  &.leyvaski
+    .icon
+      div
+        &:first-of-type
+          border: 1px solid $leyvaski
+      svg
+        fill: $leyvaski
+      .vertical-line
+        background-color: $leyvaski
+        background: linear-gradient(0deg, #d0d0d0 0%, $leyvaski 100%)
+    .port-info
+      margin-top: 25rem
+    h2
+      color: $leyvaski
+    .port-items
+      > div
+        &:nth-child(1)
+          width: 50vw
+          margin-left: 50%
+          margin-top: 8rem
+        &:nth-child(2)
+          width: 80vw
+      &.port-items--top
+        > div
+          &:first-child
+            margin-bottom: -40rem
+            margin-left: 0
+            width: 40vw
+  &.labplex
+    .icon
+      div
+        &:first-of-type
+          border: 1px solid $labplex
+      svg
+        fill: $labplex
+      .vertical-line
+        background-color: $labplex
+        background: linear-gradient(0deg, #020025 0%, $labplex 100%)
+    .port-info
+      margin-top: 25rem
+    h2
+      color: $labplex
+    .port-items
+      > div
+        &:first-child
+          width: 50vw
+        &:nth-child(2)
+          width: 40vw
+          margin-left: 55%
+        &:nth-child(3)
+          width: 60vw
+  &.monte
+    margin-top: 10rem
+    .icon
+      div
+        &:first-of-type
+          border: 1px solid $monte
+      svg
+        fill: $monte
+      .vertical-line
+        background-color: $monte
+        background: linear-gradient(0deg, rgba($black,.0) 0%, $monte 100%)
+    h2
+      color: $monte
+    .port-info
+      margin-top: 17%
+    .port-items
+      > div
+        &:first-child
+          width: 50vw
+          margin-top: 8rem
+          margin-left: 50%
+        &:nth-child(2)
+          width: 60vw
+        &:nth-child(3)
+          margin-top: -20rem
+          width: 25vw
+          margin-left: 65%
+
+.port-contain
+  .atlas
+    background: #06131e
+    display: inline-block
+    //padding: 2rem 2rem 0
+    position: relative
+    width: 872px
+    height: 913px
+    display: flex
+    justify-content: center
+    > div
+      position: absolute
+      bottom: 0
+  .nkp-shirt
+    overflow: hidden
+    background: #088cb2
+    display: inline-block
+    //padding: 2rem 2rem 0
+    position: relative
+    max-width: 872px
+    height: 913px
+    display: flex
+    justify-content: center
+    > div
+      position: absolute
+      height: 100%
+      align-items: center
+      display: flex
+
+//@media (min-width: 640px)
+  .port-info
+    top: 18.75vw
+    top: calc(75*100vw/var(--size))
+  .c-tiles--2 .c-tile:first-child
+    width: 40vw
+    margin-left: 40vw
+  .c-tiles--2 .c-tile:nth-child(2)
+    margin-top: -25vw
+    margin-top: calc(-100*100vw/var(--size))
+    width: 30vw
+    margin-left: 70vw
+  .c-tiles--2 .c-tile:nth-child(3)
+    margin-top: -75vw
+    margin-top: calc(-300*100vw/var(--size))
+    width: 40vw
+    margin-left: 0
+
+.portfolio-list
+  margin-top: 8rem
+  li
+    margin: 8rem 0
+    &:last-of-type
+      margin-bottom: 0
+
+.video
+  position: relative
+  a
+    display: inline-block
+    &::before
+      display: none
+    > div
+      position: relative
+      display: flex
+      align-items: center
+      justify-content: center
+  .tagline
+    position: absolute
+    font-size: 80px
+    font-size: 8rem
+    @media (min-width: $medium)
+      font-size: between(80px, 120px, $medium, $large)
+    @media (min-width: $large)
+      font-size: 120px
+      font-size: 12rem
+  .motif
+    img
+      mix-blend-mode: multiply
+      position: absolute
+      top: -10rem
+      left: 50%
+      transform: translateX(-50%)
+      z-index: 5
+      user-select: none
+
+#contact
+  .resume
+    i
+      padding-right: .5rem
+
+footer
+  background: #13181b
+  color: #817e8e
+  padding: 12rem 0
+  h2
+    color: $white
+    margin-bottom: 3rem
+  a
+    font-weight: 500
+    color: $blue !important
+    &::before
+      display: none
+      width: 100%
+      height: 0
+      background: $white
+    &:hover, &:focus
+      color: $white !important
+      &::before
+        height: .2rem
+  span
+    color: $white
+  .footer-info
+    text-align: right
+    margin-top: 7rem
+  .email
+    margin-bottom: 1.75rem
+    a
+      font-weight: 300
+      color: #817e8e !important
+      &:hover, &:focus
+        color: $white !important
+  .social-media
+    margin: 0 0 2rem
+    a
+      color: #817e8e !important
+      &::before
+        display: none
+      &:hover, &:focus
+        color: white !important
+        transform: scale(1.5)
+  .copyright
+    margin-top: 14.5rem
+    padding-bottom: 0
+
+/*---- START MEDIA QUERIES ----
+@media only screen and (max-width: 767px)
+  iframe
+    width: 100%
+    height: 455px
+  .patient-single
+    width: 100% !important
+  h1, h2, h3
+    span
+      display: none
+  h2
+    font-size: 1.85rem
+  h3
+    font-size: 4rem
+    margin-bottom: 1rem
+  .btn
+    margin-top: 2rem
+  section
+    margin: 10rem 0
+  header
+    padding: 5rem 0
+  .menu
+    > ul
+      li
+        margin: 3rem 0
+        a
+          font-size: 4rem
+  .banner
+    margin-top: 0
+    #logo
+      max-width: 410px
+      margin: auto
+      left: 0
+      right: 0
+      bottom: -4rem
+    .banner-image
+      background: url(../images/banner-mobile.jpg) no-repeat top center
+      height: 372px
+    &.internal
+      background: url(../images/about-banner.jpg) no-repeat center right
+      background-size: cover
+      padding: 3rem 0
+      min-height: 372px
+      .tagline
+        position: inherit
+        margin-top: 0
+        color: $white
+        font-size: 4rem
+        padding: 0
+        max-width: 400px
+      #logo
+        position: inherit
+      .banner-image
+        display: none
+        //background-position: center
+      .tagline
+        br
+          display: none
+  .about
+    padding-bottom: 10rem
+  .about-page
+    q
+      padding: 3rem
+  .web-projects
+    //padding: 3rem 0
+    .web-content
+      padding: 2.5rem
+      margin: 2rem
+      &.top
+        margin-bottom: -3rem
+      &.bottom
+        margin-top: -3rem
+      p
+        &:first-of-type
+          margin-top: -.15rem
+          padding-top: 0
+  q
+    font-size: 1.9rem
+    padding: 4rem 0 2.5rem 2.5rem
+    &::before
+      top: 3rem
+  cite
+    margin-left: 2.5rem
+  .identity-projects
+    .project-content
+      padding: 2rem
+    .project-images
+      position: relative
+      margin-top: 3rem
+    .pager
+      bottom: auto
+      font-size: 5rem
+      margin-top: -3rem
+  .brandmarks
+    padding: 13rem 0
+  .logos
+    li
+      width: 8rem
+      margin: 5%
+  .portfolio-list
+    margin-top: 4rem
+    li
+      margin: 2rem 0
+  .video
+    margin: 20rem 0 10rem
+  .icon
+    .vertical-line
+      height: 200px
+  .port-contain
+    .btn
+      margin-left: 0
+    h2
+      font-size: 4rem
+    .port-info
+      width: 100%
+      &.port-info--right
+        margin-left: 40%
+        q
+          font-size: 1.75rem
+          &::before
+            top: 4rem
+            height: 30px
+  .port-contain
+    &.motor-history
+      .port-info
+        margin-top: 15rem
+      .port-items
+        > div
+          &:first-child
+            width: 50vw
+            margin-top: 1rem
+            margin-left: 50%
+          &:nth-child(2)
+            margin-top: 30rem
+            width: 70vw
+          &:nth-child(3)
+            width: 40vw
+            margin-top: -10rem
+            margin-left: 60%
+    &.nkp
+      margin-top: 30rem
+      .port-info
+        margin-top: 20rem
+      .port-items
+        > div
+          &:first-child
+            width: 50vw
+            height: 250px
+          &:nth-child(2)
+            margin-left: 60%
+            width: 40vw
+            margin-top: 20rem
+          &:nth-child(3)
+            width: 50vw
+    &.leyvaski
+      .port-info
+        margin-top: 25rem
+      h2
+        color: $leyvaski
+      .port-items
+        > div
+          &:nth-child(1)
+            width: 50vw
+            margin-left: 50%
+            margin-top: 5rem
+          &:nth-child(2)
+            width: 80vw
+            margin-top: 40rem
+        &.port-items--top
+          > div
+            &:first-child
+              margin-bottom: -40rem
+              margin-left: 0
+              width: 40vw
+              height: 250px
+    &.labplex
+      .port-info
+        margin-top: 20rem
+      .port-items
+        > div
+          &:first-child
+            width: 50vw
+            margin-top: 2rem
+          &:nth-child(2)
+            width: 40vw
+            margin-left: 55%
+            margin-top: 30rem
+          &:nth-child(3)
+            width: 60vw
+            margin-top: 5rem
+    &.monte
+      .port-info
+        margin-top: 25rem
+      .port-items
+        > div
+          &:first-child
+            width: 50vw
+            margin-top: 3rem
+            margin-left: 50%
+          &:nth-child(2)
+            width: 60vw
+            margin-top: 35rem
+          &:nth-child(3)
+            margin-top: 10rem
+            width: 25vw
+            margin-left: 65%
+  footer
+    padding: 50px 0
+    p
+      line-height: 32px
+    img
+      margin-top: 50px
+    .footer-info
+      text-align: left
+    .copyright
+      margin-top: 7rem
+
+/*MOBILE
+
+@media only screen and (max-width: 960px) and (min-width: 768px)
+  .menu > ul li a
+    font-size: 6.5rem
+  section
+    margin: 26rem 0
+  h3
+    font-size: 6rem
+  q
+    font-size: 2.4rem
+  .banner
+    margin-top: 0
+    &:not(.internal)
+      #logo
+        margin: auto
+        left: 0
+        right: 0
+        bottom: -4rem
+        text-align: center
+    .banner-image
+      background-position: top center
+  .web-projects
+    .web-content
+      padding: 4.5rem
+      &.top
+        margin-bottom: -6rem
+      &.bottom
+        margin-top: -10rem
+  .identity-projects
+    .project-content
+      padding: 2rem
+    .project-images
+      position: relative
+      margin-top: 3rem
+    .pager
+      bottom: auto
+      font-size: 5rem
+      margin-top: -3rem
+  .logos
+    li
+      width: 8rem
+  .port-contain
+    h2
+      font-size: 7rem
+  .icon
+    .vertical-line
+      height: 250px
+  .about-page
+    h3
+      font-size: 5.5rem
+  .date
+    font-size: 22rem
+    > div
+      margin-top: -4rem
+  .port-contain
+    &.motor-history
+      .port-items
+        > div
+          &:first-child
+            margin-top: -1rem
+          &:nth-child(2)
+            margin-top: 20rem
+    &.leyvaski
+      .port-info
+        margin-top: 15rem
+      .port-items
+        > div
+          &:nth-child(2)
+            margin-top: 15rem
+        &.port-items--top
+          > div
+            &:first-child
+              margin-bottom: -30rem
+    &.labplex
+      .port-items
+        > div
+          &:nth-child(2)
+            margin-top: 25rem
+          &:nth-child(3)
+            margin-top: 5rem
+  footer
+    padding: 70px 0
+
+/*TABLET
+
+@media only screen and (max-width: 1024px) and (min-width: 960px)
+  .menu > ul li a
+    font-size: 6.5rem
+  .banner
+    margin-top: 0
+    &:not(.internal)
+      #logo
+        margin: auto
+        left: 0
+        right: 0
+        bottom: -4rem
+        text-align: center
+    .banner-image
+      background-position: top center
+  .port-contain
+    h2
+      font-size: 8rem
+  .about-page
+    h3
+      font-size: 6.75rem
+  .identity-projects
+    .project-images
+    .project-content
+      //h3
+        font-size: 5.5rem
+    .controls
+    .pager
+      bottom: -9rem
+      left: 55%
+  .port-contain
+    &.motor-history
+      .port-items
+        > div
+          &:first-child
+            margin-top: -1rem
+          &:nth-child(2)
+            margin-top: 20rem
+    &.leyvaski
+      .port-info
+        margin-top: 15rem
+      .port-items
+        > div
+          &:nth-child(2)
+            margin-top: 15rem
+        &.port-items--top
+          > div
+            &:first-child
+              margin-bottom: -30rem
+    &.labplex
+      .port-items
+        > div
+          &:nth-child(2)
+            margin-top: 25rem
+          &:nth-child(3)
+            margin-top: 5rem
+  footer
+    padding: 100px 0
+
+/*960 DESKTOP
+
+@media only screen and (max-width: 1080px) and (min-width: 1024px)
+
+
+@media only screen and (max-width: 1200px) and (min-width: 960px)
+  .logos
+    li
+      width: 8rem
+
+@media only screen and (max-width: 1500px) and (min-width: 1024px)
+  .web-projects
+    .web-content
+      &.top
+        margin-bottom: -5rem
+      &.bottom
+        margin-top: -15rem
+
+/*---- END MEDIA QUERIES ----
