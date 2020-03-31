@@ -20,13 +20,12 @@
 	<div class="menu">
 		<ul>
 			<li><a href="index.html">Home</a></li>
-			<li><a href="about.html">About</a></li>
 			<li><a href="work.html">Work</a></li>
 			<li><a href="#contact" onclick="closeNav()">Contact</a></li>
 		</ul>
 	</div>
 
-	<header>
+	<header class="internal">
 		<div class="relative align-center">
 			<div id="name" class="grid-50 tablet-50 mobile-80">
 				<a href="/">
@@ -258,7 +257,7 @@
 				<div>Los Angeles, CA</div>
 			</div>
 			<div class="grid-60 tablet-60">
-				<p class="copyright">© 2019 Francisco Leyva. All Rights Reserved.</p>
+				<p class="copyright">© 2020 Francisco Leyva. All Rights Reserved.</p>
 			</div>
 		</div>
 	</footer>
@@ -283,10 +282,8 @@
 	<script type="text/javascript">
 		 AOS.init({
 			 duration: 1200,
+			 once: true
 		 })
-		 $(function() {
-			AOS.init();
-		});
 
 		$(window).on('load', function() {
 			AOS.refresh();

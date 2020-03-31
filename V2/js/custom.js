@@ -18,23 +18,4 @@ jQuery(document).ready(function($) {
 		});
 	});
 
-
-	// var slidesPerPage = 6
-	//
-	// $(".slick").on("init", function(event, slick){
-	//    maxPages = Math.ceil(slick.slideCount/slidesPerPage);
-	//    $(this).find('.slider-paging-number li').append('/ '+maxPages);
-	// });
-	//
-	// $(".slick").slick({
-	//    slidesToShow: slidesPerPage,
-	//    slidesToScroll: slidesPerPage,
-	//    arrows: false,
-	//    autoplay: true,
-	//    dots: true,
-	//    infinite: true,
-	//    dotsClass: 'slider-paging-number'
-	// });
-
-
 });

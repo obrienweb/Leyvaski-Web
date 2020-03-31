@@ -31,7 +31,6 @@
 			<div class="menu">
 				<ul>
 					<li><a href="index.html">Home</a></li>
-					<li><a href="about.html">About</a></li>
 					<li><a href="work.html">Work</a></li>
 					<li><a href="#contact" onclick="closeNav()">Contact</a></li>
 				</ul>
@@ -97,7 +96,7 @@
 							<div class="pager">
 								Nº01
 							</div>
-							<img src="images/Motor-of-History.jpg" alt="Motor of History" class="img-resp">
+							<img src="images/Motor-of-History-bw.jpg" alt="Motor of History" class="img-resp">
 						</div>
 					</div>
 					<div class="grid-container grid-parent relative">
@@ -107,8 +106,8 @@
 							<p><strong>Motor of History</strong> is a podcast show that has discussions about objectivism, which is philosophical system developed by Russian-American writer Ayn Rand.</p>
 							<p class="hide-on-mobile">I was hired to create a new brand identity for Motor of History. I got my inspiration from Ayn Rand’s novels and the Atlas Titan. Atlas was said to have been skilled in philosophy, mathematics, and astronomy.</p>
 							<a href="" class="btn">View Project</a>
+							<div class="controls"></div>
 						</div>
-						<div class="controls"></div>
 					</div>
 				</div>
 				<div>
@@ -117,7 +116,7 @@
 							<div class="pager">
 								Nº02
 							</div>
-							<img src="images/Motor-of-History.jpg" alt="Motor of History" class="img-resp">
+							<img src="images/Motor-of-History-bw.jpg" alt="Motor of History" class="img-resp">
 						</div>
 					</div>
 					<div class="grid-container grid-parent">
@@ -127,8 +126,8 @@
 							<p><strong>LEYVASKI</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
 							<p class="hide-on-mobile">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 							<a href="" class="btn">View Project</a>
+							<div class="controls"></div>
 						</div>
-						<div class="controls"></div>
 					</div>
 				</div>
 			</section>
@@ -136,7 +135,7 @@
 			<section class="web-projects grid-container">
 				<div class="lrg-grid-container">
 					<div class="grid-container grid-parent">
-						<div class="web-content top push-50 grid-50 tablet-push-40 tablet-60">
+						<div class="web-content top fr">
 							<h2>Web <span>Design</span> Projects</h2>
 							<h3>UX/UI Design</h3>
 						</div>
@@ -234,22 +233,25 @@
 	<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<script type="text/javascript" src="js/jquery.flexslider.min.js"></script>
+	<script type="text/javascript" src="js/retina.min.js"></script>
 	<script type="text/javascript" src="js/aos.js"></script>
 	<script type="text/javascript" src="js/slick.min.js"></script>
   <script type="text/javascript" src="js/custom.js"></script>
+
 
 	<!-- AOS initialise -->
 	<script type="text/javascript">
 		 AOS.init({
 			 duration: 1200,
+			 once: true
 		 })
-		 $(function() {
-			AOS.init();
-		});
 
 		$(window).on('load', function() {
 			AOS.refresh();
 		});
+	</script>
+
+	<script type="text/javascript">
 
 		$('.slick').slick({
 			infinite: true,

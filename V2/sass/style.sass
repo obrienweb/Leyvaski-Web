@@ -339,7 +339,6 @@ input, select, textarea
 
 .page-wrapper
   max-width: 1480px
-  width: 100%
 
 .line
   position: relative
@@ -411,6 +410,12 @@ header
   max-width: 1350px
   margin-left: auto
   box-sizing: border-box
+  &.internal
+    padding: 8rem 2rem
+    margin: auto
+    .main-nav
+      margin-right: 0
+
 
 /* MENU BUTTON */
 .menu__toggler
@@ -644,7 +649,7 @@ header
     z-index: 5
     background: $white
     padding: 5rem 5rem 5rem 3rem
-    margin-bottom: 30rem
+    margin-bottom: 20rem
     h3
       font-size: 40px
       @media (min-width: $tablet)
@@ -655,17 +660,25 @@ header
     //padding-bottom: 21rem
     background: $white
     width: 223px
+    height: 50px
     position: relative
     //bottom: 0
     z-index: 5
+    margin-top: 4rem
     .slick-prev, .slick-next
       background: $white
       border: 1px solid #bbb
       width: 112px
-      height: auto
+      height: 50px
+      //height: auto
       box-sizing: border-box
       top: auto
       transform: none
+      display: -webkit-flex
+      display: -ms-flex
+      display: flex
+      align-items: center
+      justify-content: center
       +transition
       &::before, &::after
         color: rgba($black,.1)
@@ -689,6 +702,22 @@ header
   .flex-direction-nav
     a
       position: absolute
+
+.slick-prev:before, .slick-next:before
+  content: ''
+  background: url(images/arrow.svg) no-repeat center
+  background-size: 5rem
+  width: 100%
+  height: 100%
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+
+.slick-next:before
+  transform: scaleX(-1)
+
 
 .web-projects
   h3
@@ -753,6 +782,10 @@ header
     &.port-info--right
       margin-left: 55%
   &.motor-history
+    ::selection
+      background: $motor
+    ::-moz-selection
+      background: $motor
     .icon
       div
         &:first-of-type
@@ -781,6 +814,10 @@ header
           margin-left: 60%
   &.nkp
     margin-top: 40rem
+    ::selection
+      background: $nkp
+    ::-moz-selection
+      background: $nkp
     .icon
       div
         &:first-of-type
@@ -832,6 +869,10 @@ header
             margin-left: 0
             width: 40vw
   &.labplex
+    ::selection
+      background: $labplex
+    ::-moz-selection
+      background: $labplex
     .icon
       div
         &:first-of-type
@@ -856,6 +897,10 @@ header
           width: 60vw
   &.monte
     margin-top: 10rem
+    ::selection
+      background: $monte
+    ::-moz-selection
+      background: $monte
     .icon
       div
         &:first-of-type
@@ -1094,6 +1139,7 @@ footer
     .web-content
       padding: 2.5rem
       margin: 2rem
+      float: none
       &.top
         margin-bottom: -3rem
       &.bottom
@@ -1111,14 +1157,20 @@ footer
     margin-left: 2.5rem
   .identity-projects
     .project-content
-      padding: 2rem
+      padding: 5rem 2rem
+      margin-bottom: 0
     .project-images
       position: relative
       margin-top: 3rem
     .pager
-      bottom: auto
-      font-size: 5rem
-      margin-top: -3rem
+      font-size: 10rem
+      mix-blend-mode: hard-light
+      bottom: 0
+      left: auto
+      right: 2rem
+      opacity: .8
+    .controls
+      margin: 4rem auto
   .brandmarks
     padding: 13rem 0
   .logos
@@ -1130,7 +1182,7 @@ footer
     li
       margin: 2rem 0
   .video
-    margin: 20rem 0 10rem
+    margin: 13rem 0 5rem
     .motif
       img
         max-width: 15rem
@@ -1261,7 +1313,7 @@ footer
     font-size: 2.4rem
   .banner
     margin-top: 0
-    &:not(.internal)
+    //&:not(.internal)
       #logo
 
     .banner-image
@@ -1274,17 +1326,25 @@ footer
       &.bottom
         margin-top: -10rem
   .identity-projects
+    margin-bottom: 15rem
     .project-content
-      padding: 2rem
+      padding: 5rem 2rem
       width: 100%
       margin-bottom: 0
     .project-images
       position: relative
       margin-top: 3rem
     .pager
-      bottom: auto
-      font-size: 5rem
-      margin-top: -3rem
+      font-size: 10rem
+      mix-blend-mode: hard-light
+      bottom: 0
+      left: auto
+      right: 2rem
+      opacity: .8
+    .controls
+      margin: 4rem auto
+  .web-projects
+    margin-top: 15rem
   .logos
     li
       width: 8rem
@@ -1355,14 +1415,12 @@ footer
     h3
       font-size: 6.75rem
   .identity-projects
-    //.project-images
-    .project-content
-      //h3
-        font-size: 5.5rem
-    //.controls
+    margin-bottom: 15rem
     .pager
       bottom: -9rem
       left: 55%
+  .web-projects
+    margin-top: 15rem
   .video
     .motif
       img

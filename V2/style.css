@@ -353,7 +353,6 @@ input, select, textarea {
 
 .page-wrapper {
   max-width: 1480px;
-  width: 100%;
 }
 
 .line {
@@ -436,6 +435,13 @@ header {
   max-width: 1350px;
   margin-left: auto;
   box-sizing: border-box;
+}
+header.internal {
+  padding: 8rem 2rem;
+  margin: auto;
+}
+header.internal .main-nav {
+  margin-right: 0;
 }
 
 /* MENU BUTTON */
@@ -708,7 +714,7 @@ header {
   z-index: 5;
   background: #fff;
   padding: 5rem 5rem 5rem 3rem;
-  margin-bottom: 30rem;
+  margin-bottom: 20rem;
 }
 .identity-projects .project-content h3 {
   font-size: 40px;
@@ -726,17 +732,24 @@ header {
 .identity-projects .controls {
   background: #fff;
   width: 223px;
+  height: 50px;
   position: relative;
   z-index: 5;
+  margin-top: 4rem;
 }
 .identity-projects .controls .slick-prev, .identity-projects .controls .slick-next {
   background: #fff;
   border: 1px solid #bbb;
   width: 112px;
-  height: auto;
+  height: 50px;
   box-sizing: border-box;
   top: auto;
   transform: none;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   -webkit-transition: all 0.5s ease-out;
   -moz-transition: all 0.5s ease-out;
   -ms-transition: all 0.5s ease-out;
@@ -770,6 +783,23 @@ header {
 }
 .identity-projects .flex-direction-nav a {
   position: absolute;
+}
+
+.slick-prev:before, .slick-next:before {
+  content: "";
+  background: url(images/arrow.svg) no-repeat center;
+  background-size: 5rem;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.slick-next:before {
+  transform: scaleX(-1);
 }
 
 .web-projects h3 {
@@ -848,6 +878,12 @@ header {
 .port-contain .port-info.port-info--right {
   margin-left: 55%;
 }
+.port-contain.motor-history ::selection {
+  background: #f5c77e;
+}
+.port-contain.motor-history ::-moz-selection {
+  background: #f5c77e;
+}
 .port-contain.motor-history .icon div:first-of-type {
   border: 1px solid #f5c77e;
 }
@@ -880,6 +916,12 @@ header {
 }
 .port-contain.nkp {
   margin-top: 40rem;
+}
+.port-contain.nkp ::selection {
+  background: #05b4d4;
+}
+.port-contain.nkp ::-moz-selection {
+  background: #05b4d4;
 }
 .port-contain.nkp .icon div:first-of-type {
   border: 1px solid #05b4d4;
@@ -936,6 +978,12 @@ header {
   margin-left: 0;
   width: 40vw;
 }
+.port-contain.labplex ::selection {
+  background: #35ec99;
+}
+.port-contain.labplex ::-moz-selection {
+  background: #35ec99;
+}
 .port-contain.labplex .icon div:first-of-type {
   border: 1px solid #35ec99;
 }
@@ -964,6 +1012,12 @@ header {
 }
 .port-contain.monte {
   margin-top: 10rem;
+}
+.port-contain.monte ::selection {
+  background: #c7ac73;
+}
+.port-contain.monte ::-moz-selection {
+  background: #c7ac73;
 }
 .port-contain.monte .icon div:first-of-type {
   border: 1px solid #c7ac73;
@@ -1251,6 +1305,7 @@ footer .copyright {
   .web-projects .web-content {
     padding: 2.5rem;
     margin: 2rem;
+    float: none;
   }
   .web-projects .web-content.top {
     margin-bottom: -3rem;
@@ -1276,16 +1331,23 @@ footer .copyright {
   }
 
   .identity-projects .project-content {
-    padding: 2rem;
+    padding: 5rem 2rem;
+    margin-bottom: 0;
   }
   .identity-projects .project-images {
     position: relative;
     margin-top: 3rem;
   }
   .identity-projects .pager {
-    bottom: auto;
-    font-size: 5rem;
-    margin-top: -3rem;
+    font-size: 10rem;
+    mix-blend-mode: hard-light;
+    bottom: 0;
+    left: auto;
+    right: 2rem;
+    opacity: 0.8;
+  }
+  .identity-projects .controls {
+    margin: 4rem auto;
   }
 
   .brandmarks {
@@ -1305,7 +1367,7 @@ footer .copyright {
   }
 
   .video {
-    margin: 20rem 0 10rem;
+    margin: 13rem 0 5rem;
   }
   .video .motif img {
     max-width: 15rem;
@@ -1480,8 +1542,11 @@ footer .copyright {
     margin-top: -10rem;
   }
 
+  .identity-projects {
+    margin-bottom: 15rem;
+  }
   .identity-projects .project-content {
-    padding: 2rem;
+    padding: 5rem 2rem;
     width: 100%;
     margin-bottom: 0;
   }
@@ -1490,9 +1555,19 @@ footer .copyright {
     margin-top: 3rem;
   }
   .identity-projects .pager {
-    bottom: auto;
-    font-size: 5rem;
-    margin-top: -3rem;
+    font-size: 10rem;
+    mix-blend-mode: hard-light;
+    bottom: 0;
+    left: auto;
+    right: 2rem;
+    opacity: 0.8;
+  }
+  .identity-projects .controls {
+    margin: 4rem auto;
+  }
+
+  .web-projects {
+    margin-top: 15rem;
   }
 
   .logos li {
@@ -1576,9 +1651,16 @@ footer .copyright {
     font-size: 6.75rem;
   }
 
+  .identity-projects {
+    margin-bottom: 15rem;
+  }
   .identity-projects .pager {
     bottom: -9rem;
     left: 55%;
+  }
+
+  .web-projects {
+    margin-top: 15rem;
   }
 
   .video .motif img {
